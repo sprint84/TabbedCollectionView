@@ -12,6 +12,7 @@
 		45CA62A41C0E2B6400925117 /* RFTabbedCollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CA62A31C0E2B6400925117 /* RFTabbedCollectionViewTests.swift */; };
 		45CA62B61C0E31CE00925117 /* RFTabbedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CA62B51C0E31CE00925117 /* RFTabbedCollectionView.swift */; };
 		45CA62B81C0E388F00925117 /* RFTabbedCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CA62B71C0E388F00925117 /* RFTabbedCollectionView.xib */; };
+		45CA63281C0E5D1E00925117 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CA63271C0E5D1E00925117 /* TabButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		45CA62A51C0E2B6400925117 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45CA62B51C0E31CE00925117 /* RFTabbedCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFTabbedCollectionView.swift; sourceTree = "<group>"; };
 		45CA62B71C0E388F00925117 /* RFTabbedCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFTabbedCollectionView.xib; sourceTree = "<group>"; };
+		45CA63271C0E5D1E00925117 /* TabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				45CA62971C0E2B6400925117 /* RFTabbedCollectionView.h */,
 				45CA62991C0E2B6400925117 /* Info.plist */,
 				45CA62B51C0E31CE00925117 /* RFTabbedCollectionView.swift */,
+				45CA63271C0E5D1E00925117 /* TabButton.swift */,
 				45CA62B71C0E388F00925117 /* RFTabbedCollectionView.xib */,
 			);
 			path = RFTabbedCollectionView;
@@ -202,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45CA62B61C0E31CE00925117 /* RFTabbedCollectionView.swift in Sources */,
+				45CA63281C0E5D1E00925117 /* TabButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

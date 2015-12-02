@@ -10,13 +10,23 @@ import UIKit
 import RFTabbedCollectionView
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var tabbedCollectionView: RFTabbedCollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let view = RFTabbedCollectionView(frame: CGRect(x: 0, y: 100, width: 375, height: 175))
-        self.view.addSubview(view)
+        let images = [UIImage(named: "globe_icon")!,
+            UIImage(named: "globe_icon")!,
+            UIImage(named: "globe_icon")!,
+            UIImage(named: "globe_icon")!,
+            UIImage(named: "globe_icon")!,
+            UIImage(named: "globe_icon")!,
+            UIImage(named: "globe_icon")!,
+            UIImage(named: "globe_icon")!,
+            UIImage(named: "globe_icon")!,
+            UIImage(named: "globe_icon")!]
+        tabbedCollectionView.tabIcons(images)
     }
     
 

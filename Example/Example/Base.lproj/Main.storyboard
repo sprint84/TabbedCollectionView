@@ -16,9 +16,27 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDs-Jn-8Qj" customClass="RFTabbedCollectionView" customModule="RFTabbedCollectionView">
+                                <rect key="frame" x="113" y="213" width="375" height="175"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="Dkk-fq-c6G"/>
+                                    <constraint firstAttribute="height" constant="175" id="WIA-xB-blB"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QDs-Jn-8Qj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dnp-DB-eB8"/>
+                            <constraint firstItem="QDs-Jn-8Qj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nqs-52-W9G"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tabbedCollectionView" destination="QDs-Jn-8Qj" id="BgS-VQ-8Kr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

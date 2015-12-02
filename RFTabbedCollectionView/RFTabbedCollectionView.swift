@@ -8,8 +8,14 @@
 
 import UIKit
 
+@IBDesignable
 public class RFTabbedCollectionView: UIView {
     var view: UIView!
+    private let tabWidth = 64.0
+    private var tabs: [UIImage] = []
+    @IBOutlet weak var tabsScrollView: UIScrollView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -25,6 +31,11 @@ public class RFTabbedCollectionView: UIView {
         super.awakeFromNib()
     }
     
+    public func tabIcons(icons: [UIImage]) {
+        tabs = icons
+        reloadTabs()
+    }
+    
     // MARK: - Private functions
     private func loadXib() {
         view = loadViewFromNib()
@@ -38,5 +49,40 @@ public class RFTabbedCollectionView: UIView {
         let nib = UINib(nibName: "RFTabbedCollectionView", bundle: bundle)
         let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         return view
+    }
+    
+    private func reloadTabs() {
+        let _ = self.tabsScrollView.subviews.map { $0.removeFromSuperview() }
+        var i = 0.0
+        for image in tabs {
+            let button = TabButton()
+            button.frame = CGRect(x: (tabWidth * i), y: 0, width: tabWidth, height: 40)
+            button.setImage(image, forState: .Normal)
+            layoutTabButton(button)
+            self.tabsScrollView.addSubview(button)
+            i++
+            
+            button.tintColor = UIColor(red: 1.0, green: 1.0 - CGFloat(i)/10.0, blue: 1.0 - CGFloat(i)/10.0, alpha: 1.0)
+            
+        }
+        self.tabsScrollView.contentSize = CGSize(width: i*tabWidth, height: 40)
+    }
+    
+    private func layoutTabButton(button: UIButton) {
+//        let image = imageWithColor(UIColor(white: 0.8, alpha: 1.0))
+//        button.setBackgroundImage(image, forState: .Normal)
+    }
+    
+    private func imageWithColor(color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size);
+        let context = UIGraphicsGetCurrentContext();
+        
+        CGContextSetFillColorWithColor(context, color.CGColor);
+        CGContextFillRect(context, rect);
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return image
     }
 }

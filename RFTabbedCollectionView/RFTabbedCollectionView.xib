@@ -5,16 +5,30 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFTabbedCollectionView" customModule="RFTabbedCollectionView" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="0x9-hL-8bb" id="fcz-2d-0Bp"/>
+                <outlet property="pageControl" destination="6Sc-uC-dZ1" id="rn0-di-EHD"/>
+                <outlet property="tabsScrollView" destination="yZ5-Nl-2O6" id="pJB-qd-6XU"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZ5-Nl-2O6">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="3D1-a0-Coo"/>
+                    </constraints>
+                </scrollView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0x9-hL-8bb">
                     <rect key="frame" x="0.0" y="40" width="375" height="135"/>
                     <animations/>
-                    <color key="backgroundColor" red="0.15686274510000001" green="0.93333333330000001" blue="0.7725490196" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="2" minimumInteritemSpacing="2" id="k1W-QS-OTB">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -22,15 +36,7 @@
                         <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZ5-Nl-2O6">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                    <animations/>
-                    <color key="backgroundColor" red="0.96470588239999999" green="0.30196078430000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="3D1-a0-Coo"/>
-                    </constraints>
-                </scrollView>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6Sc-uC-dZ1">
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6Sc-uC-dZ1">
                     <rect key="frame" x="0.0" y="146" width="375" height="37"/>
                     <animations/>
                 </pageControl>
