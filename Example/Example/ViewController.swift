@@ -65,5 +65,8 @@ class ViewController: UIViewController, TabbedCollectionViewDataSource {
         return UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 1.0)
     }
 
+    func collectionView(collectionView: TabbedCollectionView, didSelectItemAtIndex index: Int, forTab tab: Int) {
+        print("Seleted item: \(index) on tab: \(tab)")
+    }
 }
 

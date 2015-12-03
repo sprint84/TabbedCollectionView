@@ -8,7 +8,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabbedCollectionView" customModule="TabbedCollectionView" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="0x9-hL-8bb" id="fcz-2d-0Bp"/>
-                <outlet property="pageControl" destination="6Sc-uC-dZ1" id="rn0-di-EHD"/>
                 <outlet property="tabsScrollView" destination="yZ5-Nl-2O6" id="pJB-qd-6XU"/>
             </connections>
         </placeholder>
@@ -40,10 +39,6 @@
                         <outlet property="delegate" destination="-1" id="UVi-27-fT6"/>
                     </connections>
                 </collectionView>
-                <pageControl hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6Sc-uC-dZ1">
-                    <rect key="frame" x="0.0" y="146" width="375" height="37"/>
-                    <animations/>
-                </pageControl>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -51,14 +46,10 @@
                 <constraint firstItem="0x9-hL-8bb" firstAttribute="top" secondItem="yZ5-Nl-2O6" secondAttribute="bottom" id="A9N-TR-P9o"/>
                 <constraint firstItem="yZ5-Nl-2O6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SUp-GQ-Rap"/>
                 <constraint firstAttribute="trailing" secondItem="yZ5-Nl-2O6" secondAttribute="trailing" id="V0z-VI-qZj"/>
-                <constraint firstAttribute="trailing" secondItem="6Sc-uC-dZ1" secondAttribute="trailing" id="ZWk-k1-oQN"/>
                 <constraint firstItem="yZ5-Nl-2O6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aFo-hs-3Xq"/>
-                <constraint firstAttribute="bottom" secondItem="6Sc-uC-dZ1" secondAttribute="bottom" constant="-8" id="aMJ-c3-vbI"/>
-                <constraint firstItem="6Sc-uC-dZ1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="iJ2-er-zwA"/>
                 <constraint firstAttribute="trailing" secondItem="0x9-hL-8bb" secondAttribute="trailing" id="mAF-ks-U2Y"/>
                 <constraint firstItem="0x9-hL-8bb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="naO-44-5Jk"/>
                 <constraint firstAttribute="bottom" secondItem="0x9-hL-8bb" secondAttribute="bottom" id="pfK-jW-Jrc"/>
-                <constraint firstItem="6Sc-uC-dZ1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="uyv-Ql-WtU"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

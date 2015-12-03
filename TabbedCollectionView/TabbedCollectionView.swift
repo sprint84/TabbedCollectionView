@@ -13,6 +13,7 @@ public protocol TabbedCollectionViewDataSource: class {
     func collectionView(collectionView: TabbedCollectionView, titleForItemAtIndexPath indexPath: NSIndexPath) -> String
     func collectionView(collectionView: TabbedCollectionView, imageForItemAtIndexPath indexPath: NSIndexPath) -> UIImage
     func collectionView(collectionView: TabbedCollectionView, colorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor
+    func collectionView(collectionView: TabbedCollectionView, didSelectItemAtIndex index: Int, forTab tab: Int)
 }
 
 @IBDesignable
@@ -25,7 +26,6 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
     private var currentPage = 0
     @IBOutlet weak var tabsScrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var pageControl: UIPageControl!
     
     public weak var dataSource: TabbedCollectionViewDataSource?
     
@@ -70,7 +70,7 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
     }
     
     private func reloadTabs() {
-        let _ = self.tabsScrollView.subviews.map { $0.removeFromSuperview() }
+        let _ = tabsScrollView.subviews.map { $0.removeFromSuperview() }
         var i = 0
         for (title, image) in tabsInfo {
             let button = TabButton(title: title, image: image)
@@ -80,13 +80,13 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
             if i == selectedTab {
                 button.selected = true
             }
-            self.tabsScrollView.addSubview(button)
+            tabsScrollView.addSubview(button)
             
             button.tintColor = UIColor(red: 1.0, green: 1.0 - CGFloat(i)/10.0, blue: 1.0 - CGFloat(i)/10.0, alpha: 1.0)
             
             i++
         }
-        self.tabsScrollView.contentSize = CGSize(width: Double(i)*tabWidth, height: 40)
+        tabsScrollView.contentSize = CGSize(width: Double(i)*tabWidth, height: 40)
     }
     
     func tabSelected(sender: UIButton) {
@@ -100,7 +100,6 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
         
         // Updated collection view
         collectionView.reloadData()
-        pageControl.currentPage = 0
     }
     
     // MARK: - UICollectionView data source methods
@@ -112,38 +111,25 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
         guard let numItems = dataSource?.collectionView(self, numberOfItemsInTab: selectedTab) else {
             return 0
         }
-        pageControl.numberOfPages = Int(ceil(Double(numItems) / 18.0))
         return numItems
     }
     
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCollectionViewCell
-        cell.contentView.backgroundColor = UIColor.whiteColor()
-        cell.textLabel.text = self.dataSource?.collectionView(self, titleForItemAtIndexPath: indexPath)
-        cell.imageView.image = self.dataSource?.collectionView(self, imageForItemAtIndexPath: indexPath)
-        cell.imageView.tintColor = self.dataSource?.collectionView(self, colorForItemAtIndexPath: indexPath)
+        cell.textLabel.text = dataSource?.collectionView(self, titleForItemAtIndexPath: indexPath)
+        cell.imageView.image = dataSource?.collectionView(self, imageForItemAtIndexPath: indexPath)
+        cell.imageView.tintColor = dataSource?.collectionView(self, colorForItemAtIndexPath: indexPath)
         return cell
     }
     
     // MARK: - UICollectionView delegate methods
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("selected: \(indexPath.section): \(indexPath.row)")
+        dataSource?.collectionView(self, didSelectItemAtIndex: indexPath.row, forTab: selectedTab)
     }
     
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let w = collectionView.frame.width / 5.0
         let h = collectionView.frame.height / 3.0
         return CGSize(width: w, height: h)
-    }
-    
-    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        let pageWidth = collectionView.frame.size.width
-        let currentPage = collectionView.contentOffset.x / pageWidth
-        
-        if 0.0 != fmodf(Float(currentPage), 1.0) {
-            pageControl.currentPage = Int(currentPage) + 1
-        } else {
-            pageControl.currentPage = Int(currentPage)
-        }
     }
 }
