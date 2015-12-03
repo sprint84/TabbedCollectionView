@@ -12,7 +12,7 @@ import UIKit
 public class RFTabbedCollectionView: UIView {
     var view: UIView!
     private let tabWidth = 72.0
-    private var tabsInfo: [String:UIImage] = [:]
+    private var tabsInfo: OrderedDictionary<String, UIImage> = []
     private var buttonTagOffset = 4827
     private var selectedIndex = 0
     @IBOutlet weak var tabsScrollView: UIScrollView!
@@ -33,8 +33,11 @@ public class RFTabbedCollectionView: UIView {
         super.awakeFromNib()
     }
     
-    public func createTabs(info: [String:UIImage]) {
-        tabsInfo = info
+    public func createTabs(titles: [String], images: [UIImage]) {
+        tabsInfo = OrderedDictionary()
+        for var i = 0; i < titles.count && i < images.count; i++ {
+            tabsInfo[titles[i]] = images[i]
+        }
         reloadTabs()
     }
     
