@@ -8,17 +8,26 @@
 
 import UIKit
 
+public protocol RFTabbedCollectionViewDataSource: class {
+    func collectionView(collectionView: RFTabbedCollectionView, numberOfItemsInTab tab: Int) -> Int
+    func collectionView(collectionView: RFTabbedCollectionView, titleForItemAtIndexPath indexPath: NSIndexPath) -> String
+    func collectionView(collectionView: RFTabbedCollectionView, imageForItemAtIndexPath indexPath: NSIndexPath) -> UIImage
+    func collectionView(collectionView: RFTabbedCollectionView, colorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor
+}
+
 @IBDesignable
 public class RFTabbedCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var view: UIView!
     private let tabWidth = 72.0
     private var tabsInfo: OrderedDictionary<String, UIImage> = []
     private var buttonTagOffset = 4827
-    private var selectedIndex = 0
+    private var selectedTab = 0
     private var currentPage = 0
     @IBOutlet weak var tabsScrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
+    
+    public weak var dataSource: RFTabbedCollectionViewDataSource?
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -48,7 +57,9 @@ public class RFTabbedCollectionView: UIView, UICollectionViewDataSource, UIColle
         view.frame = bounds
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         addSubview(view)
-        collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "ItemCell")
+        let bundle = NSBundle(forClass: self.dynamicType)
+        collectionView.registerClass(ItemCollectionViewCell.self, forCellWithReuseIdentifier: "ItemCell")
+        collectionView.registerNib(UINib(nibName: "ItemCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "ItemCell")
     }
     
     private func loadViewFromNib() -> UIView {
@@ -66,7 +77,7 @@ public class RFTabbedCollectionView: UIView, UICollectionViewDataSource, UIColle
             button.frame = CGRect(x: (tabWidth * Double(i)), y: 0, width: tabWidth, height: 40)
             button.tag = i + buttonTagOffset
             button.addTarget(self, action: "tabSelected:", forControlEvents: .TouchUpInside)
-            if i == selectedIndex {
+            if i == selectedTab {
                 button.selected = true
             }
             self.tabsScrollView.addSubview(button)
@@ -80,15 +91,16 @@ public class RFTabbedCollectionView: UIView, UICollectionViewDataSource, UIColle
     
     func tabSelected(sender: UIButton) {
         // Deselect previous tab
-        if let previousSelected = tabsScrollView.viewWithTag(selectedIndex + buttonTagOffset) as? UIButton {
+        if let previousSelected = tabsScrollView.viewWithTag(selectedTab + buttonTagOffset) as? UIButton {
             previousSelected.selected = false
         }
         // Select current tab
         sender.selected = true
-        selectedIndex = sender.tag - buttonTagOffset
+        selectedTab = sender.tag - buttonTagOffset
         
         // Updated collection view
         collectionView.reloadData()
+        pageControl.currentPage = 0
     }
     
     // MARK: - UICollectionView data source methods
@@ -97,14 +109,19 @@ public class RFTabbedCollectionView: UIView, UICollectionViewDataSource, UIColle
     }
     
     public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let numItems = 68
+        guard let numItems = dataSource?.collectionView(self, numberOfItemsInTab: selectedTab) else {
+            return 0
+        }
         pageControl.numberOfPages = Int(ceil(Double(numItems) / 18.0))
         return numItems
     }
     
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCell", forIndexPath: indexPath)
-        cell.contentView.backgroundColor = UIColor(red: CGFloat(Double(random())/4230003001), green: CGFloat(Double(random())/4230003001), blue: CGFloat(Double(random())/4230003010), alpha: 1.0)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCollectionViewCell
+        cell.contentView.backgroundColor = UIColor.whiteColor()
+        cell.textLabel.text = self.dataSource?.collectionView(self, titleForItemAtIndexPath: indexPath)
+        cell.imageView.image = self.dataSource?.collectionView(self, imageForItemAtIndexPath: indexPath)
+        cell.imageView.tintColor = self.dataSource?.collectionView(self, colorForItemAtIndexPath: indexPath)
         return cell
     }
     
@@ -114,7 +131,7 @@ public class RFTabbedCollectionView: UIView, UICollectionViewDataSource, UIColle
     }
     
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let w = collectionView.frame.width / 6.0
+        let w = collectionView.frame.width / 5.0
         let h = collectionView.frame.height / 3.0
         return CGSize(width: w, height: h)
     }

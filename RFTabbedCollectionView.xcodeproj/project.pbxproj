@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		45AC9BBD1C10A6EE00EA1DC6 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC9BBC1C10A6EE00EA1DC6 /* OrderedDictionary.swift */; };
+		45AC9BC21C10C0ED00EA1DC6 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC9BC01C10C0ED00EA1DC6 /* ItemCollectionViewCell.swift */; };
+		45AC9BC31C10C0ED00EA1DC6 /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45AC9BC11C10C0ED00EA1DC6 /* ItemCollectionViewCell.xib */; };
 		45CA62981C0E2B6400925117 /* RFTabbedCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CA62971C0E2B6400925117 /* RFTabbedCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45CA629F1C0E2B6400925117 /* RFTabbedCollectionView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CA62941C0E2B6400925117 /* RFTabbedCollectionView.framework */; };
 		45CA62A41C0E2B6400925117 /* RFTabbedCollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CA62A31C0E2B6400925117 /* RFTabbedCollectionViewTests.swift */; };
@@ -28,6 +30,8 @@
 
 /* Begin PBXFileReference section */
 		45AC9BBC1C10A6EE00EA1DC6 /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
+		45AC9BC01C10C0ED00EA1DC6 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		45AC9BC11C10C0ED00EA1DC6 /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		45CA62941C0E2B6400925117 /* RFTabbedCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RFTabbedCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45CA62971C0E2B6400925117 /* RFTabbedCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFTabbedCollectionView.h; sourceTree = "<group>"; };
 		45CA62991C0E2B6400925117 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,12 +83,14 @@
 		45CA62961C0E2B6400925117 /* RFTabbedCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				45CA62971C0E2B6400925117 /* RFTabbedCollectionView.h */,
 				45CA62991C0E2B6400925117 /* Info.plist */,
-				45CA62B51C0E31CE00925117 /* RFTabbedCollectionView.swift */,
-				45CA63271C0E5D1E00925117 /* TabButton.swift */,
-				45CA62B71C0E388F00925117 /* RFTabbedCollectionView.xib */,
+				45AC9BC01C10C0ED00EA1DC6 /* ItemCollectionViewCell.swift */,
+				45AC9BC11C10C0ED00EA1DC6 /* ItemCollectionViewCell.xib */,
 				45AC9BBC1C10A6EE00EA1DC6 /* OrderedDictionary.swift */,
+				45CA62971C0E2B6400925117 /* RFTabbedCollectionView.h */,
+				45CA62B51C0E31CE00925117 /* RFTabbedCollectionView.swift */,
+				45CA62B71C0E388F00925117 /* RFTabbedCollectionView.xib */,
+				45CA63271C0E5D1E00925117 /* TabButton.swift */,
 			);
 			path = RFTabbedCollectionView;
 			sourceTree = "<group>";
@@ -190,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45CA62B81C0E388F00925117 /* RFTabbedCollectionView.xib in Resources */,
+				45AC9BC31C10C0ED00EA1DC6 /* ItemCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45AC9BBD1C10A6EE00EA1DC6 /* OrderedDictionary.swift in Sources */,
+				45AC9BC21C10C0ED00EA1DC6 /* ItemCollectionViewCell.swift in Sources */,
 				45CA62B61C0E31CE00925117 /* RFTabbedCollectionView.swift in Sources */,
 				45CA63281C0E5D1E00925117 /* TabButton.swift in Sources */,
 			);
