@@ -16,17 +16,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let images = [UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!]
-        tabbedCollectionView.tabIcons(images)
+        let info = ["Home": UIImage(named: "globe_icon")!,
+            "Shopping": UIImage(named: "globe_icon")!,
+            "Health": UIImage(named: "globe_icon")!,
+            "Car and Transport": UIImage(named: "globe_icon")!,
+            "Education": UIImage(named: "globe_icon")!,
+            "Pets": UIImage(named: "globe_icon")!,
+            "Leisure": UIImage(named: "globe_icon")!,
+            "Phone": UIImage(named: "globe_icon")!,
+            "Computer": UIImage(named: "globe_icon")!,
+            "Other": UIImage(named: "globe_icon")!]
+        tabbedCollectionView.createTabs(info)
     }
     
 

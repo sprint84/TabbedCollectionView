@@ -11,8 +11,10 @@ import UIKit
 @IBDesignable
 public class RFTabbedCollectionView: UIView {
     var view: UIView!
-    private let tabWidth = 64.0
-    private var tabs: [UIImage] = []
+    private let tabWidth = 72.0
+    private var tabsInfo: [String:UIImage] = [:]
+    private var buttonTagOffset = 4827
+    private var selectedIndex = 0
     @IBOutlet weak var tabsScrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -31,8 +33,8 @@ public class RFTabbedCollectionView: UIView {
         super.awakeFromNib()
     }
     
-    public func tabIcons(icons: [UIImage]) {
-        tabs = icons
+    public func createTabs(info: [String:UIImage]) {
+        tabsInfo = info
         reloadTabs()
     }
     
@@ -53,19 +55,30 @@ public class RFTabbedCollectionView: UIView {
     
     private func reloadTabs() {
         let _ = self.tabsScrollView.subviews.map { $0.removeFromSuperview() }
-        var i = 0.0
-        for image in tabs {
-            let button = TabButton()
-            button.frame = CGRect(x: (tabWidth * i), y: 0, width: tabWidth, height: 40)
-            button.setImage(image, forState: .Normal)
-            layoutTabButton(button)
+        var i = 0
+        for (title, image) in tabsInfo {
+            let button = TabButton(title: title, image: image)
+            button.frame = CGRect(x: (tabWidth * Double(i)), y: 0, width: tabWidth, height: 40)
+            button.tag = i + buttonTagOffset
+            button.addTarget(self, action: "tabSelected:", forControlEvents: .TouchUpInside)
+            if i == selectedIndex {
+                button.selected = true
+            }
             self.tabsScrollView.addSubview(button)
-            i++
             
             button.tintColor = UIColor(red: 1.0, green: 1.0 - CGFloat(i)/10.0, blue: 1.0 - CGFloat(i)/10.0, alpha: 1.0)
             
+            i++
         }
-        self.tabsScrollView.contentSize = CGSize(width: i*tabWidth, height: 40)
+        self.tabsScrollView.contentSize = CGSize(width: Double(i)*tabWidth, height: 40)
+    }
+    
+    func tabSelected(sender: UIButton) {
+        if let previousSelected = tabsScrollView.viewWithTag(selectedIndex + buttonTagOffset) as? UIButton {
+            previousSelected.selected = false
+        }
+        sender.selected = true
+        selectedIndex = sender.tag - buttonTagOffset
     }
     
     private func layoutTabButton(button: UIButton) {
