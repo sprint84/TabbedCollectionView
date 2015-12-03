@@ -9,12 +9,13 @@
 import UIKit
 
 @IBDesignable
-public class RFTabbedCollectionView: UIView {
+public class RFTabbedCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var view: UIView!
     private let tabWidth = 72.0
     private var tabsInfo: OrderedDictionary<String, UIImage> = []
     private var buttonTagOffset = 4827
     private var selectedIndex = 0
+    private var currentPage = 0
     @IBOutlet weak var tabsScrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -47,6 +48,7 @@ public class RFTabbedCollectionView: UIView {
         view.frame = bounds
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         addSubview(view)
+        collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "ItemCell")
     }
     
     private func loadViewFromNib() -> UIView {
@@ -77,28 +79,54 @@ public class RFTabbedCollectionView: UIView {
     }
     
     func tabSelected(sender: UIButton) {
+        // Deselect previous tab
         if let previousSelected = tabsScrollView.viewWithTag(selectedIndex + buttonTagOffset) as? UIButton {
             previousSelected.selected = false
         }
+        // Select current tab
         sender.selected = true
         selectedIndex = sender.tag - buttonTagOffset
+        
+        // Updated collection view
+        collectionView.reloadData()
     }
     
-    private func layoutTabButton(button: UIButton) {
-//        let image = imageWithColor(UIColor(white: 0.8, alpha: 1.0))
-//        button.setBackgroundImage(image, forState: .Normal)
+    // MARK: - UICollectionView data source methods
+    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
     }
     
-    private func imageWithColor(color: UIColor) -> UIImage {
-        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
-        UIGraphicsBeginImageContext(rect.size);
-        let context = UIGraphicsGetCurrentContext();
+    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let numItems = 68
+        pageControl.numberOfPages = Int(ceil(Double(numItems) / 18.0))
+        return numItems
+    }
+    
+    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCell", forIndexPath: indexPath)
+        cell.contentView.backgroundColor = UIColor(red: CGFloat(Double(random())/4230003001), green: CGFloat(Double(random())/4230003001), blue: CGFloat(Double(random())/4230003010), alpha: 1.0)
+        return cell
+    }
+    
+    // MARK: - UICollectionView delegate methods
+    public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("selected: \(indexPath.section): \(indexPath.row)")
+    }
+    
+    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let w = collectionView.frame.width / 6.0
+        let h = collectionView.frame.height / 3.0
+        return CGSize(width: w, height: h)
+    }
+    
+    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let pageWidth = collectionView.frame.size.width
+        let currentPage = collectionView.contentOffset.x / pageWidth
         
-        CGContextSetFillColorWithColor(context, color.CGColor);
-        CGContextFillRect(context, rect);
-        
-        let image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        return image
+        if 0.0 != fmodf(Float(currentPage), 1.0) {
+            pageControl.currentPage = Int(currentPage) + 1
+        } else {
+            pageControl.currentPage = Int(currentPage)
+        }
     }
 }
