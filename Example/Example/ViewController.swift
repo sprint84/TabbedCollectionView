@@ -47,11 +47,22 @@ class ViewController: UIViewController, RFTabbedCollectionViewDataSource {
     }
     
     func collectionView(collectionView: RFTabbedCollectionView, imageForItemAtIndexPath indexPath: NSIndexPath) -> UIImage {
-        return UIImage()
+        var image: UIImage!
+        switch(indexPath.row % 3) {
+        case 0:
+            image = UIImage(named: "car")
+        case 1:
+            image = UIImage(named: "computer")
+        case 2:
+            image = UIImage(named: "home")
+        default:
+            image = UIImage(named: "car")
+        }
+        return image
     }
     
     func collectionView(collectionView: RFTabbedCollectionView, colorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor {
-        return UIColor(red: 0.7, green: 1.0, blue: 1.0, alpha: 1.0)
+        return UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 1.0)
     }
 
 }

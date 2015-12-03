@@ -13,16 +13,16 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="62" height="45"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nqf-pe-2Fw">
-                        <rect key="frame" x="21" y="8" width="20" height="20"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nqf-pe-2Fw">
+                        <rect key="frame" x="23" y="10" width="16" height="16"/>
                         <animations/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="Sv8-sP-Zvh"/>
-                            <constraint firstAttribute="width" constant="20" id="fY3-05-kYd"/>
+                            <constraint firstAttribute="height" constant="16" id="Sv8-sP-Zvh"/>
+                            <constraint firstAttribute="width" constant="16" id="fY3-05-kYd"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="none" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gbs-nc-06A">
-                        <rect key="frame" x="1" y="28" width="60" height="17"/>
+                        <rect key="frame" x="1" y="26" width="60" height="19"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="9"/>
                         <color key="textColor" white="0.62" alpha="1" colorSpace="calibratedWhite"/>
@@ -37,7 +37,7 @@
                 <constraint firstAttribute="trailing" secondItem="gbs-nc-06A" secondAttribute="trailing" constant="1" id="3M6-Ah-ks7"/>
                 <constraint firstItem="nqf-pe-2Fw" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="8uq-mU-Twp"/>
                 <constraint firstItem="gbs-nc-06A" firstAttribute="top" secondItem="nqf-pe-2Fw" secondAttribute="bottom" id="9nV-8Z-4ec"/>
-                <constraint firstItem="nqf-pe-2Fw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="Da5-L7-jqh"/>
+                <constraint firstItem="nqf-pe-2Fw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Da5-L7-jqh"/>
                 <constraint firstItem="gbs-nc-06A" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="O7l-lE-gMu"/>
                 <constraint firstAttribute="bottom" secondItem="gbs-nc-06A" secondAttribute="bottom" id="fUN-HZ-TNr"/>
             </constraints>

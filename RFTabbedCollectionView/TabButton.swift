@@ -9,7 +9,7 @@
 import UIKit
 
 class TabButton: UIButton {
-    private let bg = UIColor(white: 0.97, alpha: 1.0)
+    private let bg = UIColor(white: 0.95, alpha: 1.0)
     var selectionColor = UIColor(red:0.9, green:0.36, blue:0.13, alpha:1)
     private var title = ""
     private var image = UIImage()
