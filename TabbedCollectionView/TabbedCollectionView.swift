@@ -1,6 +1,6 @@
 //
-//  RFTabbedCollectionView.swift
-//  RFTabbedCollectionView
+//  TabbedCollectionView.swift
+//  TabbedCollectionView
 //
 //  Created by Guilherme Moura on 12/1/15.
 //  Copyright © 2015 Reefactor, Inc. All rights reserved.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-public protocol RFTabbedCollectionViewDataSource: class {
-    func collectionView(collectionView: RFTabbedCollectionView, numberOfItemsInTab tab: Int) -> Int
-    func collectionView(collectionView: RFTabbedCollectionView, titleForItemAtIndexPath indexPath: NSIndexPath) -> String
-    func collectionView(collectionView: RFTabbedCollectionView, imageForItemAtIndexPath indexPath: NSIndexPath) -> UIImage
-    func collectionView(collectionView: RFTabbedCollectionView, colorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor
+public protocol TabbedCollectionViewDataSource: class {
+    func collectionView(collectionView: TabbedCollectionView, numberOfItemsInTab tab: Int) -> Int
+    func collectionView(collectionView: TabbedCollectionView, titleForItemAtIndexPath indexPath: NSIndexPath) -> String
+    func collectionView(collectionView: TabbedCollectionView, imageForItemAtIndexPath indexPath: NSIndexPath) -> UIImage
+    func collectionView(collectionView: TabbedCollectionView, colorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor
 }
 
 @IBDesignable
-public class RFTabbedCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var view: UIView!
     private let tabWidth = 72.0
     private var tabsInfo: OrderedDictionary<String, UIImage> = []
@@ -27,7 +27,7 @@ public class RFTabbedCollectionView: UIView, UICollectionViewDataSource, UIColle
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     
-    public weak var dataSource: RFTabbedCollectionViewDataSource?
+    public weak var dataSource: TabbedCollectionViewDataSource?
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -64,7 +64,7 @@ public class RFTabbedCollectionView: UIView, UICollectionViewDataSource, UIColle
     
     private func loadViewFromNib() -> UIView {
         let bundle = NSBundle(forClass: self.dynamicType)
-        let nib = UINib(nibName: "RFTabbedCollectionView", bundle: bundle)
+        let nib = UINib(nibName: "TabbedCollectionView", bundle: bundle)
         let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         return view
     }

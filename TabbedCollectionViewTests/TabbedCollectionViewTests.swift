@@ -1,15 +1,15 @@
 //
-//  RFTabbedCollectionViewTests.swift
-//  RFTabbedCollectionViewTests
+//  TabbedCollectionViewTests.swift
+//  TabbedCollectionViewTests
 //
-//  Created by Guilherme Moura on 12/1/15.
+//  Created by Guilherme Moura on 12/3/15.
 //  Copyright © 2015 Reefactor, Inc. All rights reserved.
 //
 
 import XCTest
-@testable import RFTabbedCollectionView
+@testable import TabbedCollectionView
 
-class RFTabbedCollectionViewTests: XCTestCase {
+class TabbedCollectionViewTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

@@ -1,6 +1,6 @@
 //
 //  TabButton.swift
-//  RFTabbedCollectionView
+//  TabbedCollectionView
 //
 //  Created by Guilherme Moura on 12/1/15.
 //  Copyright © 2015 Reefactor, Inc. All rights reserved.

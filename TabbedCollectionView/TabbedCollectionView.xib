@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFTabbedCollectionView" customModule="RFTabbedCollectionView" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabbedCollectionView" customModule="TabbedCollectionView" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="0x9-hL-8bb" id="fcz-2d-0Bp"/>
                 <outlet property="pageControl" destination="6Sc-uC-dZ1" id="rn0-di-EHD"/>

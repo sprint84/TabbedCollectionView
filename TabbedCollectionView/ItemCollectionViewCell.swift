@@ -1,6 +1,6 @@
 //
 //  ItemCollectionViewCell.swift
-//  RFTabbedCollectionView
+//  TabbedCollectionView
 //
 //  Created by Guilherme Moura on 12/3/15.
 //  Copyright © 2015 Reefactor, Inc. All rights reserved.

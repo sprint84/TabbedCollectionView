@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import RFTabbedCollectionView
+import TabbedCollectionView
 
-class ViewController: UIViewController, RFTabbedCollectionViewDataSource {
-    @IBOutlet weak var tabbedCollectionView: RFTabbedCollectionView!
+class ViewController: UIViewController, TabbedCollectionViewDataSource {
+    @IBOutlet weak var tabbedCollectionView: TabbedCollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +38,15 @@ class ViewController: UIViewController, RFTabbedCollectionViewDataSource {
     }
     
     // MARK: - RFTabbedCollectionView data source methods
-    func collectionView(collectionView: RFTabbedCollectionView, numberOfItemsInTab tab: Int) -> Int {
+    func collectionView(collectionView: TabbedCollectionView, numberOfItemsInTab tab: Int) -> Int {
         return (tab+1)*10
     }
 
-    func collectionView(collectionView: RFTabbedCollectionView, titleForItemAtIndexPath indexPath: NSIndexPath) -> String {
+    func collectionView(collectionView: TabbedCollectionView, titleForItemAtIndexPath indexPath: NSIndexPath) -> String {
         return "Item \(indexPath.row)"
     }
     
-    func collectionView(collectionView: RFTabbedCollectionView, imageForItemAtIndexPath indexPath: NSIndexPath) -> UIImage {
+    func collectionView(collectionView: TabbedCollectionView, imageForItemAtIndexPath indexPath: NSIndexPath) -> UIImage {
         var image: UIImage!
         switch(indexPath.row % 3) {
         case 0:
@@ -61,7 +61,7 @@ class ViewController: UIViewController, RFTabbedCollectionViewDataSource {
         return image
     }
     
-    func collectionView(collectionView: RFTabbedCollectionView, colorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor {
+    func collectionView(collectionView: TabbedCollectionView, colorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor {
         return UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 1.0)
     }
 
