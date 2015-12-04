@@ -9,7 +9,7 @@
 import UIKit
 import TabbedCollectionView
 
-class ViewController: UIViewController, TabbedCollectionViewDataSource {
+class ViewController: UIViewController, TabbedCollectionViewDataSource, TabbedCollectionViewDelegate {
     @IBOutlet weak var tabbedCollectionView: TabbedCollectionView!
     
     override func viewDidLoad() {
@@ -29,6 +29,7 @@ class ViewController: UIViewController, TabbedCollectionViewDataSource {
             UIImage(named: "globe_icon")!]
         tabbedCollectionView.createTabs(titles, images: images)
         tabbedCollectionView.dataSource = self
+        tabbedCollectionView.delegate = self
     }
     
 
@@ -65,8 +66,9 @@ class ViewController: UIViewController, TabbedCollectionViewDataSource {
         return UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 1.0)
     }
 
+    // MARK: - RFTabbedCollectionView delegate methods
     func collectionView(collectionView: TabbedCollectionView, didSelectItemAtIndex index: Int, forTab tab: Int) {
-        print("Seleted item: \(index) on tab: \(tab)")
+        print("Selected item: \(index) on tab: \(tab)")
     }
 }
 

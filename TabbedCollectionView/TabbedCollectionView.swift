@@ -13,6 +13,9 @@ public protocol TabbedCollectionViewDataSource: class {
     func collectionView(collectionView: TabbedCollectionView, titleForItemAtIndexPath indexPath: NSIndexPath) -> String
     func collectionView(collectionView: TabbedCollectionView, imageForItemAtIndexPath indexPath: NSIndexPath) -> UIImage
     func collectionView(collectionView: TabbedCollectionView, colorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor
+}
+
+public protocol TabbedCollectionViewDelegate: class {
     func collectionView(collectionView: TabbedCollectionView, didSelectItemAtIndex index: Int, forTab tab: Int)
 }
 
@@ -28,6 +31,7 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
     @IBOutlet weak var collectionView: UICollectionView!
     
     public weak var dataSource: TabbedCollectionViewDataSource?
+    public weak var delegate: TabbedCollectionViewDelegate?
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -124,7 +128,7 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
     
     // MARK: - UICollectionView delegate methods
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        dataSource?.collectionView(self, didSelectItemAtIndex: indexPath.row, forTab: selectedTab)
+        delegate?.collectionView(self, didSelectItemAtIndex: indexPath.row, forTab: selectedTab)
     }
     
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
