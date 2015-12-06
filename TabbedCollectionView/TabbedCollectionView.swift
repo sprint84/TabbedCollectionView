@@ -22,7 +22,8 @@ public protocol TabbedCollectionViewDelegate: class {
 @IBDesignable
 public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var view: UIView!
-    private let tabWidth = 72.0
+    private let tabWidth = 80.0
+    private let tabHeight = 32.0
     private var tabsInfo: OrderedDictionary<String, UIImage> = []
     private var buttonTagOffset = 4827
     private var selectedTab = 0
@@ -78,7 +79,7 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
         var i = 0
         for (title, image) in tabsInfo {
             let button = TabButton(title: title, image: image)
-            button.frame = CGRect(x: (tabWidth * Double(i)), y: 0, width: tabWidth, height: 40)
+            button.frame = CGRect(x: (tabWidth * Double(i)), y: 0, width: tabWidth, height: tabHeight)
             button.tag = i + buttonTagOffset
             button.addTarget(self, action: "tabSelected:", forControlEvents: .TouchUpInside)
             if i == selectedTab {
@@ -90,7 +91,7 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
             
             i++
         }
-        tabsScrollView.contentSize = CGSize(width: Double(i)*tabWidth, height: 40)
+        tabsScrollView.contentSize = CGSize(width: Double(i)*tabWidth, height: tabHeight)
     }
     
     func tabSelected(sender: UIButton) {

@@ -27,7 +27,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
         set {
             if newValue {
                 selectionView.frame = self.bounds
-                selectionView.backgroundColor = UIColor(red:0.9, green:0.36, blue:0.13, alpha:0.5)
+                selectionView.backgroundColor = UIColor(red:0.9, green:0.36, blue:0.13, alpha:0.2)
                 indicatorView.frame = CGRect(x: 0, y: self.frame.height - 2, width: self.frame.width, height: 2)
                 indicatorView.backgroundColor = UIColor(red:0.9, green:0.36, blue:0.13, alpha:1.0)
                 self.addSubview(selectionView)

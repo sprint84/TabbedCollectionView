@@ -73,11 +73,11 @@ class TabButton: UIButton {
             underscore.stroke()
         }
         
-        let imageFrame = CGRect(x: rect.width/2.0 - 10.0, y: 6, width: 18, height: 18)
+        let imageFrame = CGRect(x: rect.width/2.0 - 10.0, y: 3, width: 16, height: 16)
         self.tintColor.setFill()
         image.drawInRect(imageFrame)
         
-        let textFrame = CGRect(x: 4, y: 26, width: rect.width - 8, height: 14)
+        let textFrame = CGRect(x: 4, y: 20, width: rect.width - 8, height: 14)
         attributedTitle.drawInRect(textFrame)
     }
 }
