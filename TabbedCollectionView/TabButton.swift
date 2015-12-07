@@ -74,7 +74,7 @@ class TabButton: UIButton {
             underscore.stroke()
         }
         
-        let imageFrame = CGRect(x: rect.width/2.0 - 10.0, y: 3, width: 16, height: 16)
+        let imageFrame = CGRect(x: rect.width/2.0 - 8.0, y: 3, width: 16, height: 16)
         self.tintColor.setFill()
         image.drawInRect(imageFrame)
         

@@ -39,6 +39,11 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
     
     public weak var dataSource: TabbedCollectionViewDataSource?
     public weak var delegate: TabbedCollectionViewDelegate?
+    public var selectionColor = UIColor(red:0.9, green:0.36, blue:0.13, alpha:1.0) {
+        didSet {
+            reloadTabs()
+        }
+    }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -89,6 +94,7 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
         var i = 0
         for item in tabsInfo {
             let button = TabButton(title: item.title, image: item.image, color: item.color)
+            button.selectionColor = selectionColor
             button.frame = CGRect(x: (tabWidth * Double(i)), y: 0, width: tabWidth, height: tabHeight)
             button.tag = i + buttonTagOffset
             button.addTarget(self, action: "tabSelected:", forControlEvents: .TouchUpInside)
@@ -129,6 +135,7 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
     
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCollectionViewCell
+        cell.selectionColor = selectionColor
         cell.textLabel.text = dataSource?.collectionView(self, titleForItemAtIndexPath: indexPath)
         cell.imageView.image = dataSource?.collectionView(self, imageForItemAtIndexPath: indexPath)
         cell.imageView.tintColor = dataSource?.collectionView(self, colorForItemAtIndexPath: indexPath)
