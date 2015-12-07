@@ -2,6 +2,8 @@
 
 This is a combination of a `UICollectionView` and a tabbed controller. Users can use the tabs to switch among categories and the subsets are displayed in the `UICollectionView`.
 
+![CalculatorKeyboard Screenshot](./screenshot1.png?raw=true)
+
 ## Usage
 
 To run the example project, clone the repo, and open the 'Example/Example.xcodeproj' file.
