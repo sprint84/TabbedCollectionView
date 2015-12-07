@@ -53,16 +53,19 @@ class HorizontalFlowLayout: UICollectionViewFlowLayout {
         let newRect = CGRect(x: newX, y: rect.origin.y, width: newWidth, height: rect.size.height)
         
         let allAttributesInRect = super.layoutAttributesForElementsInRect(newRect)
+        var newAttributesInRect = [UICollectionViewLayoutAttributes]()
         for attr in allAttributesInRect! {
             let newAttr = self.layoutAttributesForItemAtIndexPath(attr.indexPath)
-            attr.frame = newAttr!.frame
-            attr.center = newAttr!.center
-            attr.bounds = newAttr!.bounds
-            attr.hidden = newAttr!.hidden
-            attr.size = newAttr!.size
+            let nattr = attr.copy() as! UICollectionViewLayoutAttributes
+            nattr.frame = newAttr!.frame
+            nattr.center = newAttr!.center
+            nattr.bounds = newAttr!.bounds
+            nattr.hidden = newAttr!.hidden
+            nattr.size = newAttr!.size
+            newAttributesInRect.append(nattr)
         }
         
-        return allAttributesInRect
+        return newAttributesInRect
     }
     
     override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
