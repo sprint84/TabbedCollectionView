@@ -15,7 +15,7 @@ class TabButton: UIButton {
     private var image = UIImage()
     private var attributedTitle = NSAttributedString()
     
-    init(title: String, image: UIImage) {
+    init(title: String, image: UIImage, color: UIColor) {
         self.title = title
         self.image = image
         let paragraphStyle = NSMutableParagraphStyle()
@@ -27,6 +27,7 @@ class TabButton: UIButton {
         self.attributedTitle = NSAttributedString(string: title, attributes: attributes)
         super.init(frame: CGRectZero)
         backgroundColor = bg
+        tintColor = color
     }
     
     required init?(coder aDecoder: NSCoder) {

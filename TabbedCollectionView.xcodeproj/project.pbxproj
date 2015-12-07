@@ -17,6 +17,7 @@
 		45C524201C10EC5900510CF7 /* TabbedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5241A1C10EC5900510CF7 /* TabbedCollectionView.swift */; };
 		45C524211C10EC5900510CF7 /* TabbedCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C5241B1C10EC5900510CF7 /* TabbedCollectionView.xib */; };
 		45C524221C10EC5900510CF7 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5241C1C10EC5900510CF7 /* TabButton.swift */; };
+		45C6BF591C160FC10094CDE4 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6BF581C160FC10094CDE4 /* ItemInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		45C5241A1C10EC5900510CF7 /* TabbedCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedCollectionView.swift; sourceTree = "<group>"; };
 		45C5241B1C10EC5900510CF7 /* TabbedCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabbedCollectionView.xib; sourceTree = "<group>"; };
 		45C5241C1C10EC5900510CF7 /* TabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
+		45C6BF581C160FC10094CDE4 /* ItemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				45C5241B1C10EC5900510CF7 /* TabbedCollectionView.xib */,
 				458306191C14DE6D006E934A /* HorizontalFlowLayout.swift */,
 				45C5241C1C10EC5900510CF7 /* TabButton.swift */,
+				45C6BF581C160FC10094CDE4 /* ItemInfo.swift */,
 			);
 			path = TabbedCollectionView;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				45C524221C10EC5900510CF7 /* TabButton.swift in Sources */,
 				45C524201C10EC5900510CF7 /* TabbedCollectionView.swift in Sources */,
 				4583061A1C14DE6D006E934A /* HorizontalFlowLayout.swift in Sources */,
+				45C6BF591C160FC10094CDE4 /* ItemInfo.swift in Sources */,
 				45C5241F1C10EC5900510CF7 /* OrderedDictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,10 +24,16 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
     var view: UIView!
     private let tabWidth = 80.0
     private let tabHeight = 32.0
-    private var tabsInfo: OrderedDictionary<String, UIImage> = []
+    private var tabsInfo = [ItemInfo]()
     private var buttonTagOffset = 4827
     private var selectedTab = 0
     private var currentPage = 0
+    private var cellWidth: CGFloat {
+        return collectionView.frame.width / 5.0
+    }
+    private var cellHeight: CGFloat {
+        return collectionView.frame.height / 3.0
+    }
     @IBOutlet weak var tabsScrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -48,11 +54,8 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
         super.awakeFromNib()
     }
     
-    public func createTabs(titles: [String], images: [UIImage]) {
-        tabsInfo = OrderedDictionary()
-        for var i = 0; i < titles.count && i < images.count; i++ {
-            tabsInfo[titles[i]] = images[i]
-        }
+    public func createTabs(items: [ItemInfo]) {
+        tabsInfo = items
         reloadTabs()
     }
     
@@ -62,14 +65,7 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
         view.frame = bounds
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         addSubview(view)
-        let bundle = NSBundle(forClass: self.dynamicType)
-        collectionView.registerClass(ItemCollectionViewCell.self, forCellWithReuseIdentifier: "ItemCell")
-        collectionView.registerNib(UINib(nibName: "ItemCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "ItemCell")
-        let layout = HorizontalFlowLayout()
-        let w = collectionView.frame.width / 5.0
-        let h = collectionView.frame.height / 3.0
-        layout.itemSize = CGSize(width: w, height: h)
-        collectionView.collectionViewLayout = layout
+        setupCollectionView()
     }
     
     private func loadViewFromNib() -> UIView {
@@ -79,11 +75,20 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
         return view
     }
     
+    private func setupCollectionView() {
+        let bundle = NSBundle(forClass: self.dynamicType)
+        collectionView.registerClass(ItemCollectionViewCell.self, forCellWithReuseIdentifier: "ItemCell")
+        collectionView.registerNib(UINib(nibName: "ItemCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "ItemCell")
+        let layout = HorizontalFlowLayout()
+        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+        collectionView.collectionViewLayout = layout
+    }
+    
     private func reloadTabs() {
         let _ = tabsScrollView.subviews.map { $0.removeFromSuperview() }
         var i = 0
-        for (title, image) in tabsInfo {
-            let button = TabButton(title: title, image: image)
+        for item in tabsInfo {
+            let button = TabButton(title: item.title, image: item.image, color: item.color)
             button.frame = CGRect(x: (tabWidth * Double(i)), y: 0, width: tabWidth, height: tabHeight)
             button.tag = i + buttonTagOffset
             button.addTarget(self, action: "tabSelected:", forControlEvents: .TouchUpInside)
@@ -91,9 +96,6 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
                 button.selected = true
             }
             tabsScrollView.addSubview(button)
-            
-            button.tintColor = UIColor(red: 1.0, green: 1.0 - CGFloat(i)/10.0, blue: 1.0 - CGFloat(i)/10.0, alpha: 1.0)
-            
             i++
         }
         tabsScrollView.contentSize = CGSize(width: Double(i)*tabWidth, height: tabHeight)
@@ -109,6 +111,7 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
         selectedTab = sender.tag - buttonTagOffset
         
         // Updated collection view
+        collectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 10, height: 10), animated: true)
         collectionView.reloadData()
     }
     
@@ -138,8 +141,6 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
     }
     
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let w = collectionView.frame.width / 5.0
-        let h = collectionView.frame.height / 3.0
-        return CGSize(width: w, height: h)
+        return CGSize(width: cellWidth, height: cellHeight)
     }
 }

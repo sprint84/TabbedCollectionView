@@ -9,25 +9,20 @@
 import UIKit
 import TabbedCollectionView
 
+class Item: ItemInfo {
+    @objc var title: String = ""
+    @objc var image: UIImage = UIImage()
+    @objc var color = UIColor.blackColor()
+}
+
 class ViewController: UIViewController, TabbedCollectionViewDataSource, TabbedCollectionViewDelegate {
     @IBOutlet weak var tabbedCollectionView: TabbedCollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        let titles = ["Home", "Shopping", "Health", "Car and Transport", "Education", "Pets", "Leisure", "Phone", "Computer", "Other"]
-        let images = [UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!,
-            UIImage(named: "globe_icon")!]
-        tabbedCollectionView.createTabs(titles, images: images)
+
+        let tabs = buildTabs()
+        tabbedCollectionView.createTabs(tabs)
         tabbedCollectionView.dataSource = self
         tabbedCollectionView.delegate = self
     }
@@ -36,6 +31,55 @@ class ViewController: UIViewController, TabbedCollectionViewDataSource, TabbedCo
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func buildTabs() -> [Item] {
+        let home = Item()
+        home.title = "Home"
+        home.image = UIImage(named: "globe_icon")!
+        home.color = UIColor.redColor()
+        
+        let shop = Item()
+        shop.title = "Shopping"
+        shop.image = UIImage(named: "globe_icon")!
+        shop.color = UIColor.cyanColor()
+        
+        let health = Item()
+        health.title = "Health"
+        health.image = UIImage(named: "globe_icon")!
+        health.color = UIColor.orangeColor()
+        
+        let car = Item()
+        car.title = "Car and Transport"
+        car.image = UIImage(named: "globe_icon")!
+        car.color = UIColor.greenColor()
+        
+        let edu = Item()
+        edu.title = "Education"
+        edu.image = UIImage(named: "globe_icon")!
+        edu.color = UIColor.purpleColor()
+        
+        let pets = Item()
+        pets.title = "Pets"
+        pets.image = UIImage(named: "globe_icon")!
+        pets.color = UIColor.grayColor()
+        
+        let leisure = Item()
+        leisure.title = "Leisure"
+        leisure.image = UIImage(named: "globe_icon")!
+        leisure.color = UIColor.magentaColor()
+        
+        let comp = Item()
+        comp.title = "Computer"
+        comp.image = UIImage(named: "globe_icon")!
+        comp.color = UIColor.blueColor()
+        
+        let other = Item()
+        other.title = "Other"
+        other.image = UIImage(named: "globe_icon")!
+        other.color = UIColor.brownColor()
+        
+        return [home, shop, health, car, edu, pets, leisure, comp, other]
     }
     
     // MARK: - RFTabbedCollectionView data source methods
