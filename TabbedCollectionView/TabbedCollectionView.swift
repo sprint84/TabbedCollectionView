@@ -44,6 +44,16 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
             reloadTabs()
         }
     }
+    public var tabTitleColor = UIColor.darkTextColor() {
+        didSet {
+            reloadTabs()
+        }
+    }
+    public var tabBackgroundColor = UIColor(white: 0.95, alpha: 1.0) {
+        didSet {
+            reloadTabs()
+        }
+    }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -95,6 +105,8 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
         for item in tabsInfo {
             let button = TabButton(title: item.title, image: item.image, color: item.color)
             button.selectionColor = selectionColor
+            button.titleColor = tabTitleColor
+            button.bgColor = tabBackgroundColor
             button.frame = CGRect(x: (tabWidth * Double(i)), y: 0, width: tabWidth, height: tabHeight)
             button.tag = i + buttonTagOffset
             button.addTarget(self, action: "tabSelected:", forControlEvents: .TouchUpInside)

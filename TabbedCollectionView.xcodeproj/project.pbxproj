@@ -13,7 +13,6 @@
 		45C5240D1C10EC1B00510CF7 /* TabbedCollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5240C1C10EC1B00510CF7 /* TabbedCollectionViewTests.swift */; };
 		45C5241D1C10EC5900510CF7 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C524171C10EC5900510CF7 /* ItemCollectionViewCell.swift */; };
 		45C5241E1C10EC5900510CF7 /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C524181C10EC5900510CF7 /* ItemCollectionViewCell.xib */; };
-		45C5241F1C10EC5900510CF7 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C524191C10EC5900510CF7 /* OrderedDictionary.swift */; };
 		45C524201C10EC5900510CF7 /* TabbedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5241A1C10EC5900510CF7 /* TabbedCollectionView.swift */; };
 		45C524211C10EC5900510CF7 /* TabbedCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C5241B1C10EC5900510CF7 /* TabbedCollectionView.xib */; };
 		45C524221C10EC5900510CF7 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5241C1C10EC5900510CF7 /* TabButton.swift */; };
@@ -40,7 +39,6 @@
 		45C5240E1C10EC1B00510CF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45C524171C10EC5900510CF7 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		45C524181C10EC5900510CF7 /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
-		45C524191C10EC5900510CF7 /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		45C5241A1C10EC5900510CF7 /* TabbedCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedCollectionView.swift; sourceTree = "<group>"; };
 		45C5241B1C10EC5900510CF7 /* TabbedCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabbedCollectionView.xib; sourceTree = "<group>"; };
 		45C5241C1C10EC5900510CF7 /* TabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
@@ -90,7 +88,6 @@
 				45C524021C10EC1B00510CF7 /* Info.plist */,
 				45C524171C10EC5900510CF7 /* ItemCollectionViewCell.swift */,
 				45C524181C10EC5900510CF7 /* ItemCollectionViewCell.xib */,
-				45C524191C10EC5900510CF7 /* OrderedDictionary.swift */,
 				45C524001C10EC1B00510CF7 /* TabbedCollectionView.h */,
 				45C5241A1C10EC5900510CF7 /* TabbedCollectionView.swift */,
 				45C5241B1C10EC5900510CF7 /* TabbedCollectionView.xib */,
@@ -225,7 +222,6 @@
 				45C524201C10EC5900510CF7 /* TabbedCollectionView.swift in Sources */,
 				4583061A1C14DE6D006E934A /* HorizontalFlowLayout.swift in Sources */,
 				45C6BF591C160FC10094CDE4 /* ItemInfo.swift in Sources */,
-				45C5241F1C10EC5900510CF7 /* OrderedDictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

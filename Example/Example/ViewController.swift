@@ -25,7 +25,6 @@ class ViewController: UIViewController, TabbedCollectionViewDataSource, TabbedCo
         tabbedCollectionView.createTabs(tabs)
         tabbedCollectionView.dataSource = self
         tabbedCollectionView.delegate = self
-        tabbedCollectionView.selectionColor = UIColor.blueColor()
     }
     
 

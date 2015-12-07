@@ -9,8 +9,17 @@
 import UIKit
 
 class TabButton: UIButton {
-    private let bg = UIColor(white: 0.95, alpha: 1.0)
+    var bgColor = UIColor(white: 0.95, alpha: 1.0) {
+        didSet {
+            backgroundColor = bgColor
+        }
+    }
     var selectionColor = UIColor(red:0.9, green:0.36, blue:0.13, alpha:1)
+    var titleColor = UIColor.darkTextColor() {
+        didSet {
+            buildAttributedTitle()
+        }
+    }
     private var title = ""
     private var image = UIImage()
     private var attributedTitle = NSAttributedString()
@@ -18,21 +27,15 @@ class TabButton: UIButton {
     init(title: String, image: UIImage, color: UIColor) {
         self.title = title
         self.image = image
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .Center
-        paragraphStyle.lineBreakMode = .ByTruncatingMiddle
-        let attributes: [String: AnyObject] = [NSForegroundColorAttributeName: UIColor.darkTextColor(),
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: 8)!,
-            NSParagraphStyleAttributeName: paragraphStyle]
-        self.attributedTitle = NSAttributedString(string: title, attributes: attributes)
         super.init(frame: CGRectZero)
-        backgroundColor = bg
+        buildAttributedTitle()
+        backgroundColor = bgColor
         tintColor = color
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        backgroundColor = bg
+        backgroundColor = bgColor
     }
     
     override var highlighted: Bool {
@@ -43,7 +46,7 @@ class TabButton: UIButton {
             if newValue || selected {
                 backgroundColor = UIColor(white: 0.87, alpha: 1.0)
             } else {
-                backgroundColor = bg
+                backgroundColor = bgColor
             }
             super.highlighted = newValue
         }
@@ -57,7 +60,7 @@ class TabButton: UIButton {
             if newValue {
                 backgroundColor = UIColor(white: 0.87, alpha: 1.0)
             } else {
-                backgroundColor = bg
+                backgroundColor = bgColor
             }
             super.selected = newValue
             setNeedsDisplay()
@@ -80,5 +83,15 @@ class TabButton: UIButton {
         
         let textFrame = CGRect(x: 4, y: 20, width: rect.width - 8, height: 14)
         attributedTitle.drawInRect(textFrame)
+    }
+    
+    func buildAttributedTitle() {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .Center
+        paragraphStyle.lineBreakMode = .ByTruncatingMiddle
+        let attributes: [String: AnyObject] = [NSForegroundColorAttributeName: titleColor,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: 8)!,
+            NSParagraphStyleAttributeName: paragraphStyle]
+        self.attributedTitle = NSAttributedString(string: title, attributes: attributes)
     }
 }
