@@ -29,7 +29,7 @@ For further details, please visit the [Carthage Github page](https://github.com/
 
 ##Usage
 
-Using TabbedCollectionView is quite simple. First you need to import the Framework
+Using `TabbedCollectionView` is quite simple. First you need to import the Framework
 
 ```swift
 import TabbedCollectionView
@@ -56,6 +56,8 @@ func collectionView(collectionView: TabbedCollectionView, numberOfItemsInTab tab
 func collectionView(collectionView: TabbedCollectionView, titleForItemAtIndexPath indexPath: NSIndexPath) -> String
 func collectionView(collectionView: TabbedCollectionView, imageForItemAtIndexPath indexPath: NSIndexPath) -> UIImage
 func collectionView(collectionView: TabbedCollectionView, colorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor
+func collectionView(collectionView: TabbedCollectionView, titleColorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor
+func collectionView(collectionView: TabbedCollectionView, backgroundColorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor
 ```
 
 The only catch here is that the method `colorForItemAtIndexPath` relies on the `tintColor` to work, so you must use your `UIImage` with the rendering mode set to `.Template`.
@@ -68,7 +70,13 @@ func collectionView(collectionView: TabbedCollectionView, didSelectItemAtIndex i
 
 ### Customization
 
-TODO
+`TabbedCollectionView` supports some customization through the methods:
+
+```swift
+selectionColor: UIColor
+tabTitleColor: UIColor
+tabBackgroundColor: UIColor
+```
 
 ## Author
 
