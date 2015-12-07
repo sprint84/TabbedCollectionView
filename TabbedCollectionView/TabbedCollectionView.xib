@@ -28,12 +28,7 @@
                     <rect key="frame" x="0.0" y="32" width="375" height="143"/>
                     <animations/>
                     <color key="backgroundColor" white="0.97999999999999998" alpha="1" colorSpace="calibratedWhite"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Ung-Wu-ynC">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
+                    <collectionViewLayout key="collectionViewLayout" id="V0f-Fz-4wr" customClass="HorizontalFlowLayout" customModule="TabbedCollectionView" customModuleProvider="target"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="chL-q5-IiB"/>
                         <outlet property="delegate" destination="-1" id="UVi-27-fT6"/>

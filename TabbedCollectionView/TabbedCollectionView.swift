@@ -65,6 +65,11 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
         let bundle = NSBundle(forClass: self.dynamicType)
         collectionView.registerClass(ItemCollectionViewCell.self, forCellWithReuseIdentifier: "ItemCell")
         collectionView.registerNib(UINib(nibName: "ItemCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "ItemCell")
+        let layout = HorizontalFlowLayout()
+        let w = collectionView.frame.width / 5.0
+        let h = collectionView.frame.height / 3.0
+        layout.itemSize = CGSize(width: w, height: h)
+        collectionView.collectionViewLayout = layout
     }
     
     private func loadViewFromNib() -> UIView {

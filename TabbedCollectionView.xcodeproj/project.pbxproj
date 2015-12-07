@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4583061A1C14DE6D006E934A /* HorizontalFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458306191C14DE6D006E934A /* HorizontalFlowLayout.swift */; };
 		45C524011C10EC1B00510CF7 /* TabbedCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C524001C10EC1B00510CF7 /* TabbedCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45C524081C10EC1B00510CF7 /* TabbedCollectionView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C523FD1C10EC1B00510CF7 /* TabbedCollectionView.framework */; };
 		45C5240D1C10EC1B00510CF7 /* TabbedCollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5240C1C10EC1B00510CF7 /* TabbedCollectionViewTests.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		458306191C14DE6D006E934A /* HorizontalFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalFlowLayout.swift; sourceTree = "<group>"; };
 		45C523FD1C10EC1B00510CF7 /* TabbedCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TabbedCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C524001C10EC1B00510CF7 /* TabbedCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabbedCollectionView.h; sourceTree = "<group>"; };
 		45C524021C10EC1B00510CF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				45C524001C10EC1B00510CF7 /* TabbedCollectionView.h */,
 				45C5241A1C10EC5900510CF7 /* TabbedCollectionView.swift */,
 				45C5241B1C10EC5900510CF7 /* TabbedCollectionView.xib */,
+				458306191C14DE6D006E934A /* HorizontalFlowLayout.swift */,
 				45C5241C1C10EC5900510CF7 /* TabButton.swift */,
 			);
 			path = TabbedCollectionView;
@@ -217,6 +220,7 @@
 				45C5241D1C10EC5900510CF7 /* ItemCollectionViewCell.swift in Sources */,
 				45C524221C10EC5900510CF7 /* TabButton.swift in Sources */,
 				45C524201C10EC5900510CF7 /* TabbedCollectionView.swift in Sources */,
+				4583061A1C14DE6D006E934A /* HorizontalFlowLayout.swift in Sources */,
 				45C5241F1C10EC5900510CF7 /* OrderedDictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,6 +407,7 @@
 				45C524131C10EC1B00510CF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		45C524141C10EC1B00510CF7 /* Build configuration list for PBXNativeTarget "TabbedCollectionViewTests" */ = {
 			isa = XCConfigurationList;
@@ -411,6 +416,7 @@
 				45C524161C10EC1B00510CF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
