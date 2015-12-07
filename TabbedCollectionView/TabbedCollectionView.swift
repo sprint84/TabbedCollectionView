@@ -13,6 +13,8 @@ public protocol TabbedCollectionViewDataSource: class {
     func collectionView(collectionView: TabbedCollectionView, titleForItemAtIndexPath indexPath: NSIndexPath) -> String
     func collectionView(collectionView: TabbedCollectionView, imageForItemAtIndexPath indexPath: NSIndexPath) -> UIImage
     func collectionView(collectionView: TabbedCollectionView, colorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor
+    func collectionView(collectionView: TabbedCollectionView, titleColorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor
+    func collectionView(collectionView: TabbedCollectionView, backgroundColorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor
 }
 
 public protocol TabbedCollectionViewDelegate: class {
@@ -151,6 +153,8 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
         cell.textLabel.text = dataSource?.collectionView(self, titleForItemAtIndexPath: indexPath)
         cell.imageView.image = dataSource?.collectionView(self, imageForItemAtIndexPath: indexPath)
         cell.imageView.tintColor = dataSource?.collectionView(self, colorForItemAtIndexPath: indexPath)
+        cell.textLabel.textColor = dataSource?.collectionView(self, titleColorForItemAtIndexPath: indexPath)
+        cell.contentView.backgroundColor = dataSource?.collectionView(self, backgroundColorForItemAtIndexPath: indexPath)
         return cell
     }
     

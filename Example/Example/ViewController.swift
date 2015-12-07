@@ -109,6 +109,14 @@ class ViewController: UIViewController, TabbedCollectionViewDataSource, TabbedCo
     func collectionView(collectionView: TabbedCollectionView, colorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor {
         return UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 1.0)
     }
+    
+    func collectionView(collectionView: TabbedCollectionView, titleColorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor {
+        return UIColor(white: 0.55, alpha: 1.0)
+    }
+    
+    func collectionView(collectionView: TabbedCollectionView, backgroundColorForItemAtIndexPath indexPath: NSIndexPath) -> UIColor {
+        return UIColor.whiteColor()
+    }
 
     // MARK: - RFTabbedCollectionView delegate methods
     func collectionView(collectionView: TabbedCollectionView, didSelectItemAtIndex index: Int, forTab tab: Int) {
