@@ -76,6 +76,12 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
         reloadTabs()
     }
     
+    public func updateLayout() {
+        let layout = HorizontalFlowLayout()
+        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+        collectionView.collectionViewLayout = layout
+    }
+    
     // MARK: - Private functions
     private func loadXib() {
         view = loadViewFromNib()
@@ -96,9 +102,7 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
         let bundle = NSBundle(forClass: self.dynamicType)
         collectionView.registerClass(ItemCollectionViewCell.self, forCellWithReuseIdentifier: "ItemCell")
         collectionView.registerNib(UINib(nibName: "ItemCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "ItemCell")
-        let layout = HorizontalFlowLayout()
-        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
-        collectionView.collectionViewLayout = layout
+        updateLayout()
     }
     
     private func reloadTabs() {

@@ -8,55 +8,71 @@
 
 import UIKit
 
-class HorizontalFlowLayout: UICollectionViewFlowLayout {
-    override init() {
-        super.init()
-        scrollDirection = .Horizontal
-        minimumLineSpacing = 0
-        minimumInteritemSpacing = 0
+class HorizontalFlowLayout: UICollectionViewLayout {
+    var itemSize = CGSizeZero {
+        didSet {
+            invalidateLayout()
+        }
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        scrollDirection = .Horizontal
-        minimumLineSpacing = 0
-        minimumInteritemSpacing = 0
+    private var cellCount = 0
+    private var boundsSize = CGSizeZero
+    
+    override func prepareLayout() {
+        cellCount = self.collectionView!.numberOfItemsInSection(0)
+        boundsSize = self.collectionView!.bounds.size
+    }
+    
+    override func collectionViewContentSize() -> CGSize {
+        let verticalItemsCount = Int(floor(boundsSize.height / itemSize.height))
+        let horizontalItemsCount = Int(floor(boundsSize.width / itemSize.width))
+        
+        let itemsPerPage = verticalItemsCount * horizontalItemsCount
+        let numberOfItems = cellCount
+        let numberOfPages = Int(ceil(Double(numberOfItems) / Double(itemsPerPage)))
+        
+        var size = boundsSize
+        size.width = CGFloat(numberOfPages) * boundsSize.width
+        return size
     }
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        let allAttributes = super.layoutAttributesForElementsInRect(rect)
-        let verticalItemsCount = Int(floor(self.collectionView!.bounds.size.height / self.itemSize.height))
-        let horizontalItemsCount = Int(floor(self.collectionView!.bounds.size.width / self.itemSize.width))
-        let itemsPerPage = verticalItemsCount * horizontalItemsCount
-        
-        var newAttributesInRect = [UICollectionViewLayoutAttributes]()
-        for var i = 0; i < allAttributes!.count; i++ {
-            let attributes = allAttributes![i]
-            let nattr = attributes.copy() as! UICollectionViewLayoutAttributes
-            let currentPage = Int(floor(Double(i) / Double(itemsPerPage)))
-            let currentRow = Int(floor(Double(i - currentPage * itemsPerPage) / Double(horizontalItemsCount)))
-            let currentColumn = i % horizontalItemsCount
-            var frame = attributes.frame
-            frame.origin.x = self.itemSize.width * CGFloat(currentColumn) + CGFloat(currentPage) * self.collectionView!.bounds.size.width
-            frame.origin.y = self.itemSize.height * CGFloat(currentRow)
-            nattr.frame = frame
-            newAttributesInRect.append(nattr)
-            if currentColumn == 3 && currentRow == 2 {
-                print(frame)
-            }
+        var allAttributes = [UICollectionViewLayoutAttributes]()
+        for var i = 0; i < cellCount; i++ {
+            let indexPath = NSIndexPath(forRow: i, inSection: 0)
+            let attr = self.computeLayoutAttributesForCellAtIndexPath(indexPath)
+            allAttributes.append(attr)
         }
-        return newAttributesInRect
+        return allAttributes
+    }
+    
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+        return self.computeLayoutAttributesForCellAtIndexPath(indexPath)
     }
     
     override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
         return true
     }
     
-    override func collectionViewContentSize() -> CGSize {
-        let size = super.collectionViewContentSize()
-        let collectionViewWidth = self.collectionView!.frame.size.width
-        let nbOfScreens = Int(ceil(size.width / collectionViewWidth))
-        let newSize = CGSize(width: CGFloat(nbOfScreens) * collectionViewWidth, height: size.height)
-        return newSize
+    func computeLayoutAttributesForCellAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes {
+        let row = indexPath.row
+        let bounds = self.collectionView!.bounds
+        
+        let verticalItemsCount = Int(floor(boundsSize.height / itemSize.height))
+        let horizontalItemsCount = Int(floor(boundsSize.width / itemSize.width))
+        let itemsPerPage = verticalItemsCount * horizontalItemsCount
+        
+        let columnPosition = row % horizontalItemsCount
+        let rowPosition = (row/horizontalItemsCount)%verticalItemsCount
+        let itemPage = Int(floor(Double(row)/Double(itemsPerPage)))
+        
+        let attr = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+
+        var frame = CGRectZero
+        frame.origin.x = CGFloat(itemPage) * bounds.size.width + CGFloat(columnPosition) * itemSize.width
+        frame.origin.y = CGFloat(rowPosition) * itemSize.height
+        frame.size = itemSize
+        attr.frame = frame
+        
+        return attr
     }
 }

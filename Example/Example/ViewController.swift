@@ -33,6 +33,10 @@ class ViewController: UIViewController, TabbedCollectionViewDataSource, TabbedCo
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidLayoutSubviews() {
+        tabbedCollectionView.updateLayout()
+    }
+    
     func buildTabs() -> [Item] {
         let home = Item()
         home.title = "Home"
