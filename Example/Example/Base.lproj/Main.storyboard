@@ -18,12 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDs-Jn-8Qj" customClass="TabbedCollectionView" customModule="TabbedCollectionView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="175"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="244"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Iif-Qo-m5H"/>
-                                    <constraint firstAttribute="height" constant="175" id="WIA-xB-blB"/>
+                                    <constraint firstAttribute="height" constant="244" id="WIA-xB-blB"/>
                                 </constraints>
                             </view>
                         </subviews>
