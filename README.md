@@ -1,4 +1,4 @@
-# TabbedCollectionView [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![GitHub release](https://img.shields.io/badge/Release-v1.0.0-brightgreen.svg)]()
+# TabbedCollectionView [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![GitHub release](https://img.shields.io/badge/Release-v1.1.1-brightgreen.svg)]()
 
 This is a combination of a `UICollectionView` and a tabbed controller. Users can use the tabs to switch among categories and the subsets are displayed in the `UICollectionView`.
 
@@ -18,7 +18,7 @@ RFCalculatorKeyboard is available through [Carthage](https://github.com/Carthage
 it, simply add the following line to your Cartfile:
 
 ```ruby
-github "sprint84/TabbedCollectionView" ~> 1.0
+github "sprint84/TabbedCollectionView" ~> 1.1
 ```
 
 ###Installing Carthage
