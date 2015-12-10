@@ -50,7 +50,7 @@ class HorizontalFlowLayout: UICollectionViewLayout {
     }
     
     override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
-        return true
+        return !CGSizeEqualToSize(newBounds.size, self.collectionView!.bounds.size)
     }
     
     func computeLayoutAttributesForCellAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes {

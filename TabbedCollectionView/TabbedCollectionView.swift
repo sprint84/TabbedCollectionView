@@ -21,8 +21,7 @@ public protocol TabbedCollectionViewDelegate: class {
     func collectionView(collectionView: TabbedCollectionView, didSelectItemAtIndex index: Int, forTab tab: Int)
 }
 
-@IBDesignable
-public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+@IBDesignable public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var view: UIView!
     private let tabWidth = 80.0
     private let tabHeight = 32.0
@@ -36,6 +35,9 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
     private var cellHeight: CGFloat {
         return collectionView.frame.height / 3.0
     }
+    private var userInteracted = false
+    private var storedOffset = CGPointZero
+    
     @IBOutlet weak var tabsScrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -103,6 +105,7 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
         collectionView.registerClass(ItemCollectionViewCell.self, forCellWithReuseIdentifier: "ItemCell")
         collectionView.registerNib(UINib(nibName: "ItemCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "ItemCell")
         updateLayout()
+        storedOffset = collectionView.contentOffset
     }
     
     private func reloadTabs() {
@@ -169,5 +172,27 @@ public class TabbedCollectionView: UIView, UICollectionViewDataSource, UICollect
     
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+    public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        userInteracted = true
+    }
+    
+    public func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            userInteracted = false
+            storedOffset = collectionView.contentOffset
+        }
+    }
+    
+    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        userInteracted = false
+        storedOffset = collectionView.contentOffset
+    }
+    
+    public func scrollViewDidScroll(scrollView: UIScrollView) {
+        if !userInteracted {
+            collectionView.contentOffset = storedOffset
+        }
     }
 }
