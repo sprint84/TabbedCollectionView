@@ -21,7 +21,7 @@ it, simply add the following line to your Cartfile:
 github "sprint84/TabbedCollectionView" ~> 1.1
 ```
 
-###Installing Carthage
+### Installing Carthage
 
 To install the `carthage` tool on your system, please download and run the `Carthage.pkg` file for the latest release, then follow the on-screen instructions.
 
@@ -29,7 +29,7 @@ Alternately, you can use Homebrew and install the `carthage` tool on your system
 
 For further details, please visit the [Carthage Github page](https://github.com/Carthage/Carthage)
 
-##Usage
+## Usage
 
 Using `TabbedCollectionView` is quite simple. First you need to import the Framework
 
